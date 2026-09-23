@@ -1,0 +1,33 @@
+// ==========================================================================
+// Global breakpoint overrides (component-level ones live beside each
+// component via the respond() mixin)
+// ==========================================================================
+@use 'mixins' as *;
+
+// Very large screens (1920×1080): give content a little more room
+@include respond-min('desktop') {
+  :root {
+    font-size: 17px;
+  }
+}
+
+@include respond('tablet-portrait') {
+  :root {
+    font-size: 15.5px;
+  }
+
+  .container,
+  .navbar__inner,
+  .hero__inner,
+  .footer__inner {
+    padding-inline: space('lg');
+  }
+}
+
+// Touch devices ignore background-attachment: fixed and some (iOS) render it
+// badly, so fall back to a normal scrolling background there.
+@media (hover: none) and (pointer: coarse) {
+  .philosophy {
+    background-attachment: scroll;
+  }
+}

@@ -1,0 +1,235 @@
+// ==========================================================================
+// Sticky navbar: large at top, compact on scroll, reading-progress bar,
+// active-section highlighting, hamburger menu at tablet-portrait and below
+// ==========================================================================
+@use 'mixins' as *;
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: z('nav');
+  width: 100%;
+  height: $nav-height;
+  background: alpha(color('bg'), 0.72);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid color('border');
+  transition: height $transition-base, background-color $transition-base,
+    box-shadow $transition-base;
+
+  &__inner {
+    @include container;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: space('lg');
+  }
+
+  &__brand {
+    display: inline-flex;
+    align-items: center;
+    gap: space('xs');
+    font-family: $font-mono;
+    font-size: $nav-brand-font;
+    font-weight: 700;
+    color: color('green');
+    white-space: nowrap;
+    transition: font-size $transition-base;
+    @include text-glow(color('green'), 0.6);
+
+    &:hover {
+      color: color('green');
+    }
+  }
+
+  &__cursor {
+    display: inline-block;
+    width: 0.55em;
+    height: 1.05em;
+    background: color('green');
+    animation: blink 1.1s steps(1) infinite;
+  }
+
+  &__menu {
+    display: flex;
+    align-items: center;
+    gap: space('xs');
+  }
+
+  &__link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: space('xs');
+    padding: space('xs') space('sm');
+    border-radius: $radius;
+    font-family: $font-mono;
+    font-size: $nav-font;
+    color: color('text-muted');
+    transition: font-size $transition-base, color $transition-fast,
+      background-color $transition-fast;
+
+    i {
+      font-size: 0.85em;
+    }
+
+    // Underline that grows on hover / active
+    &::after {
+      content: '';
+      position: absolute;
+      left: space('sm');
+      right: space('sm');
+      bottom: 2px;
+      height: 2px;
+      background: color('green');
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform $transition-base;
+    }
+
+    &:hover,
+    &.active {
+      color: color('green');
+      &::after {
+        transform: scaleX(1);
+      }
+    }
+
+    &.active {
+      background: alpha(color('green'), 0.08);
+      @include text-glow(color('green'), 0.5);
+    }
+  }
+
+  &__toggle {
+    display: none;
+    width: 44px;
+    height: 44px;
+    border: 1px solid color('border');
+    border-radius: $radius;
+    color: color('green');
+    font-size: 1.2rem;
+    transition: border-color $transition-fast, box-shadow $transition-fast;
+
+    &:hover {
+      border-color: color('green');
+      @include glow;
+    }
+
+    .fa-xmark {
+      display: none;
+    }
+  }
+
+  // Reading-position indicator. JS sets --progress (0 → 1).
+  &__progress {
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, color('green-dim'), color('green'));
+    transform-origin: left center;
+    transform: scaleX(var(--progress, 0));
+    box-shadow: 0 0 8px alpha(color('green'), 0.8);
+  }
+
+  // ---- Compact state (toggled by JS past a scroll threshold) ---------------
+  &--compact {
+    height: $nav-height-compact;
+    background: alpha(color('bg'), 0.92);
+    box-shadow: 0 6px 24px alpha(color('bg'), 0.9);
+
+    .navbar__brand {
+      font-size: $nav-brand-font-compact;
+    }
+
+    .navbar__link {
+      font-size: $nav-font-compact;
+    }
+  }
+
+  // ---- Laptop / tablet landscape: tighten spacing --------------------------
+  @include respond('tablet-landscape') {
+    &__menu {
+      gap: 0;
+    }
+
+    &__link {
+      font-size: 0.95rem;
+      padding-inline: space('xs');
+
+      &::after {
+        left: space('xs');
+        right: space('xs');
+      }
+    }
+  }
+
+  // ---- Tablet portrait & below: hamburger + slide-down menu ----------------
+  @include respond('tablet-portrait') {
+    height: $nav-height-compact + 10px;
+
+    &__brand {
+      font-size: 1.3rem;
+    }
+
+    &__toggle {
+      @include flex-center;
+    }
+
+    &__menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      padding: space('xs') $container-pad space('md');
+      background: alpha(color('bg'), 0.97);
+      border-bottom: 1px solid color('border');
+      transform: translateY(-8px);
+      opacity: 0;
+      visibility: hidden;
+      transition: transform $transition-base, opacity $transition-base,
+        visibility 0s linear 0.35s;
+    }
+
+    &__link {
+      width: 100%;
+      font-size: 1.05rem;
+      padding: space('sm');
+    }
+
+    &.is-open {
+      .navbar__menu {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+        transition: transform $transition-base, opacity $transition-base, visibility 0s;
+      }
+
+      .fa-bars {
+        display: none;
+      }
+
+      .fa-xmark {
+        display: inline-block;
+      }
+    }
+
+    &--compact {
+      height: $nav-height-compact;
+
+      .navbar__brand {
+        font-size: $nav-brand-font-compact;
+      }
+
+      .navbar__link {
+        font-size: 0.95rem;
+      }
+    }
+  }
+}

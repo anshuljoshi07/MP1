@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anshul Joshi — Software Engineer | GenAI &amp; Conversational Systems</title>
+  <meta name="description" content="Portfolio of Anshul Joshi — Software Engineer building production GenAI and conversational-AI systems, MS CS at UIUC.">
+  <meta name="theme-color" content="#000000">
+  <link rel="icon" href="assets/img/profile-placeholder.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;600;700&amp;display=swap">
+  <!-- Font Awesome: CSS icon font for scalable vector icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <!-- Styles (src/css/main.scss) and scripts (src/js/main.js) are bundled by
+       webpack via src/index.js and injected as an external bundle.js -->
+</head>
+<body>
+  <a class="skip-link" href="#experience">Skip to content</a>
+
+  <!-- ===================== STICKY NAVBAR ===================== -->
+  <nav class="navbar" id="navbar" aria-label="Primary">
+    <div class="navbar__inner">
+      <a class="navbar__brand" href="#home" data-scroll>
+        <span>~/anshul</span><span class="navbar__cursor" aria-hidden="true"></span>
+      </a>
+
+      <button class="navbar__toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navMenu" aria-label="Toggle navigation">
+        <i class="fa-solid fa-bars" aria-hidden="true"></i>
+        <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+      </button>
+
+      <ul class="navbar__menu" id="navMenu">
+        <li><a class="navbar__link" href="#home" data-scroll><i class="fa-solid fa-house" aria-hidden="true"></i>Home</a></li>
+        <li><a class="navbar__link" href="#experience" data-scroll><i class="fa-solid fa-briefcase" aria-hidden="true"></i>Experience</a></li>
+        <li><a class="navbar__link" href="#projects" data-scroll><i class="fa-solid fa-code" aria-hidden="true"></i>Projects</a></li>
+        <li><a class="navbar__link" href="#achievements" data-scroll><i class="fa-solid fa-trophy" aria-hidden="true"></i>Achievements</a></li>
+        <li><a class="navbar__link" href="#contact" data-scroll><i class="fa-solid fa-envelope" aria-hidden="true"></i>Contact</a></li>
+      </ul>
+    </div>
+    <div class="navbar__progress" id="navProgress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+  </nav>
+
+  <!-- ===================== HEADER / HERO ===================== -->
+  <header class="hero" id="home">
+    <canvas class="hero__rain" id="matrixRain" aria-hidden="true"></canvas>
+
+    <div class="hero__inner">
+      <div class="hero__content">
+        <p class="hero__prompt">anshul@uiuc:~$ whoami</p>
+        <h1 class="hero__name">Anshul Joshi</h1>
+        <p class="hero__tagline">Software Engineer | GenAI &amp; Conversational Systems | Applied ML Researcher</p>
+        <p class="hero__lede">
+          <strong>3 years building production GenAI &amp; conversational-AI systems at American Express</strong>
+          — now pursuing my Master's in CS at UIUC.
+        </p>
+
+        <ul class="hero__meta">
+          <li><i class="fa-solid fa-location-dot" aria-hidden="true"></i>Champaign, IL</li>
+          <li><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>MS CS, UIUC</li>
+          <li><i class="fa-solid fa-flask" aria-hidden="true"></i>2 IEEE publications</li>
+        </ul>
+
+        <div class="hero__actions">
+          <a class="hero__cta hero__cta--pulse" href="#experience" data-scroll>
+            <i class="fa-solid fa-terminal" aria-hidden="true"></i>View Experience
+          </a>
+          <a class="hero__cta hero__cta--ghost" href="#contact" data-scroll>
+            <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>Get in Touch
+          </a>
+        </div>
+
+        <ul class="social-links" aria-label="Social profiles">
+          <li><a class="social-links__link" href="https://www.linkedin.com/in/anshul-joshi-24212618b/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a></li>
+          <li><a class="social-links__link" href="https://github.com/anshuljoshi07" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a></li>
+          <li><a class="social-links__link" href="https://x.com/Seeking_joshi" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a></li>
+          <li><a class="social-links__link" href="mailto:anshuljoshipratik@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope" aria-hidden="true"></i></a></li>
+        </ul>
+      </div>
+
+      <div class="hero__media">
+        <div class="hero__photo-frame">
+          <img class="hero__photo" src="assets/img/profile-placeholder.png" alt="Portrait of Anshul Joshi" width="842" height="1264">
+        </div>
+      </div>
+    </div>
+
+    <a class="hero__scroll" href="#experience" data-scroll aria-label="Scroll to experience">
+      <span>scroll</span>
+      <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+    </a>
+  </header>
+
+  <main>
+    <!-- ===================== EXPERIENCE ===================== -->
+    <section class="section" id="experience" aria-labelledby="experience-title">
+      <div class="container">
+        <div class="section__header reveal">
+          <h2 class="section__title" id="experience-title">Experience</h2>
+          <p class="section__subtitle">// production systems, real users, enterprise scale</p>
+        </div>
+
+        <ol class="timeline">
+          <li class="timeline__item timeline__item--current reveal">
+            <article class="timeline__card">
+              <div class="timeline__head">
+                <h3 class="timeline__role">Software Engineer II</h3>
+                <span class="timeline__date">Apr 2025 – Present</span>
+              </div>
+              <p class="timeline__org"><i class="fa-solid fa-building" aria-hidden="true"></i>American Express — Global Interactive Voice Response Team</p>
+              <ul class="timeline__points">
+                <li>Architected a <strong>Multi-Modal Voice Response (MMVR)</strong> platform syncing voice with in-app visual flows across internet and intranet channels, enabling secure fintech actions like payments.</li>
+                <li>Built on an API-orchestration and session-spanning framework supporting parallel voice and web ecosystems.</li>
+                <li>Drove a <strong>20% increase in self-service rate</strong> while sustaining <strong>100K+ calls at 99.9% availability</strong>.</li>
+              </ul>
+              <div class="timeline__tags">
+                <span class="tag">API Orchestration</span><span class="tag">Distributed Systems</span><span class="tag">Voice + Web</span>
+              </div>
+            </article>
+          </li>
+
+          <li class="timeline__item reveal">
+            <article class="timeline__card">
+              <div class="timeline__head">
+                <h3 class="timeline__role">Software Engineer I</h3>
+                <span class="timeline__date">Jul 2023 – Apr 2025</span>
+              </div>
+              <p class="timeline__org"><i class="fa-solid fa-building" aria-hidden="true"></i>American Express — Global Interactive Voice Response Team</p>
+              <ul class="timeline__points">
+                <li>Engineered an <strong>LLM-based self-service voice bot</strong> integrating RASA and OpenAI models (Whisper, Nuance), replacing static IVR scripts with context-aware prompting inside a regulated environment.</li>
+                <li>Fine-tuned intent and entity recognition with LLMs, lifting match rate by <strong>29%</strong> over the legacy ML baseline.</li>
+                <li>Led the Acquisition Promotions and card Freeze/Unfreeze microservices — <strong>5,000+ calls/month at 99.9% availability</strong>, 150% above projected volume, and <strong>$80K–$100K yearly savings</strong>.</li>
+              </ul>
+              <div class="timeline__tags">
+                <span class="tag">RASA</span><span class="tag">OpenAI</span><span class="tag">Whisper</span><span class="tag">Microservices</span>
+              </div>
+            </article>
+          </li>
+
+          <li class="timeline__item reveal">
+            <article class="timeline__card">
+              <div class="timeline__head">
+                <h3 class="timeline__role">Technical Advisor &amp; BD Analyst</h3>
+                <span class="timeline__date">Dec 2022 – Feb 2023</span>
+              </div>
+              <p class="timeline__org"><i class="fa-solid fa-building" aria-hidden="true"></i>Sereko — India's first psychodermatology brand</p>
+              <ul class="timeline__points">
+                <li>Benchmarked pricing across <strong>50+ competitor SKUs</strong> and finalized 20+ launch SKUs.</li>
+                <li>Designed an SEO + LLM-based discovery strategy and evaluated 10+ marketplaces for a 0→1 go-to-market launch.</li>
+              </ul>
+              <div class="timeline__tags">
+                <span class="tag">Pricing</span><span class="tag">SEO</span><span class="tag">GTM</span>
+              </div>
+            </article>
+          </li>
+
+          <li class="timeline__item reveal">
+            <article class="timeline__card">
+              <div class="timeline__head">
+                <h3 class="timeline__role">Software Engineer Intern</h3>
+                <span class="timeline__date">May 2022 – Jul 2022</span>
+              </div>
+              <p class="timeline__org"><i class="fa-solid fa-building" aria-hidden="true"></i>American Express</p>
+              <ul class="timeline__points">
+                <li>Built a real-time social-media bot (Python, Tweepy) that monitored tweets mentioning Amex and classified them across 5+ signals — sentiment, virality, bot probability, prior engagement.</li>
+                <li>Analyzed <strong>50,000+ customer and competitor tweets</strong> and prototyped an agent context layer for pre-interaction visibility.</li>
+              </ul>
+              <div class="timeline__tags">
+                <span class="tag">Python</span><span class="tag">Tweepy</span><span class="tag">NLP</span>
+              </div>
+            </article>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===================== PROJECTS CAROUSEL ===================== -->
+    <section class="section section--alt" id="projects" aria-labelledby="projects-title">
+      <div class="container">
+        <div class="section__header reveal">
+          <h2 class="section__title" id="projects-title">Projects &amp; Research</h2>
+          <p class="section__subtitle">// agents, planners and swarm-trained networks</p>
+        </div>
+
+        <div class="carousel reveal" id="projectCarousel" aria-roledescription="carousel" aria-label="Projects">
+          <button class="carousel__arrow carousel__arrow--prev" type="button" data-carousel-prev aria-label="Previous project">
+            <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+          </button>
+
+          <div class="carousel__viewport">
+            <div class="carousel__track" data-carousel-track>
+              <article class="carousel__slide" aria-roledescription="slide" aria-label="1 of 3">
+                <figure class="carousel__figure">
+                  <img src="assets/img/projects/trading-bot.svg" alt="Architecture diagram: news feeds and NIFTY symbols flow through a dedup buffer into a dual-pass LLM agent that emits trade signals" width="800" height="500" loading="lazy">
+                </figure>
+                <div class="carousel__body">
+                  <span class="carousel__index">01 / 03 — side project</span>
+                  <h3 class="carousel__title">Real-time LLM-News Trading Bot</h3>
+                  <p class="carousel__summary">Event-driven, dual-pass trading agent tracking 50+ NIFTY symbols, cutting LLM token usage by 60% with a hash-based dedup buffer.</p>
+                  <div class="carousel__tags"><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">Gemini 2.5</span></div>
+                  <button class="carousel__cta" type="button" data-modal-open="modal-trading">
+                    <i class="fa-solid fa-magnifying-glass-chart" aria-hidden="true"></i>View Case Study
+                  </button>
+                </div>
+              </article>
+
+              <article class="carousel__slide" aria-roledescription="slide" aria-label="2 of 3">
+                <figure class="carousel__figure">
+                  <img src="assets/img/projects/smirp.svg" alt="Concept diagram: SMIRP connects a student's social feeds, schedule and screen time into planning recommendations" width="800" height="500" loading="lazy">
+                </figure>
+                <div class="carousel__body">
+                  <span class="carousel__index">02 / 03 — IEEE ICACITE 2024</span>
+                  <h3 class="carousel__title">SMIRP — Social Media Interactive Resource Planner</h3>
+                  <p class="carousel__summary">A planner that helps students turn social-media time into a managed resource, balancing it against their academic schedule.</p>
+                  <div class="carousel__tags"><span class="tag">Research</span><span class="tag">HCI</span><span class="tag">IEEE</span></div>
+                  <button class="carousel__cta" type="button" data-modal-open="modal-smirp">
+                    <i class="fa-solid fa-magnifying-glass-chart" aria-hidden="true"></i>View Case Study
+                  </button>
+                </div>
+              </article>
+
+              <article class="carousel__slide" aria-roledescription="slide" aria-label="3 of 3">
+                <figure class="carousel__figure">
+                  <img src="assets/img/projects/credit-scoring.svg" alt="Diagram: a particle swarm converges on the best feature subset, which feeds a neural-network credit-score classifier" width="800" height="500" loading="lazy">
+                </figure>
+                <div class="carousel__body">
+                  <span class="carousel__index">03 / 03 — IEEE ViTECoN 2023</span>
+                  <h3 class="carousel__title">Credit Scoring via Swarm Intelligence</h3>
+                  <p class="carousel__summary">Swarm-intelligence feature selection paired with a Particle-Swarm-Optimization-trained neural network for credit classification.</p>
+                  <div class="carousel__tags"><span class="tag">PSO</span><span class="tag">ANN</span><span class="tag">ML</span></div>
+                  <button class="carousel__cta" type="button" data-modal-open="modal-credit">
+                    <i class="fa-solid fa-magnifying-glass-chart" aria-hidden="true"></i>View Case Study
+                  </button>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <button class="carousel__arrow carousel__arrow--next" type="button" data-carousel-next aria-label="Next project">
+            <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+          </button>
+
+          <div class="carousel__dots" data-carousel-dots role="group" aria-label="Choose project"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== ACHIEVEMENTS (multi-column) ===================== -->
+    <section class="section" id="achievements" aria-labelledby="achievements-title">
+      <div class="container">
+        <div class="section__header reveal">
+          <h2 class="section__title" id="achievements-title">Achievements</h2>
+          <p class="section__subtitle">// benchmarks, rankings and publications</p>
+        </div>
+
+        <ul class="stats">
+          <li class="stats__card reveal">
+            <span class="stats__icon"><i class="fa-solid fa-square-root-variable" aria-hidden="true"></i></span>
+            <span class="stats__value">170<small>/170</small></span>
+            <span class="stats__label">GRE Quant</span>
+            <span class="stats__detail">155/170 Verbal · 96+ percentile quant</span>
+          </li>
+          <li class="stats__card reveal">
+            <span class="stats__icon"><i class="fa-solid fa-chart-line" aria-hidden="true"></i></span>
+            <span class="stats__value">99.3<small>%ile</small></span>
+            <span class="stats__label">CAT 2025</span>
+            <span class="stats__detail">Among 500K+ applicants · IELTS 8.5 band</span>
+          </li>
+          <li class="stats__card reveal">
+            <span class="stats__icon"><i class="fa-solid fa-rocket" aria-hidden="true"></i></span>
+            <span class="stats__value">Top 5<small>%</small></span>
+            <span class="stats__label">GrowthHack 2024</span>
+            <span class="stats__detail">Of 450+ teams in Amex's largest company-wide hackathon</span>
+          </li>
+          <li class="stats__card reveal">
+            <span class="stats__icon"><i class="fa-solid fa-book-open" aria-hidden="true"></i></span>
+            <span class="stats__value">2<small>× IEEE</small></span>
+            <span class="stats__label">Publications</span>
+            <span class="stats__detail">Plus Rank 1, CFA Finance Forward Quiz 2026</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===================== PHILOSOPHY (fixed background) ===================== -->
+    <section class="philosophy" id="philosophy" aria-label="Philosophy">
+      <blockquote class="philosophy__quote reveal">
+        <i class="philosophy__icon fa-solid fa-quote-left" aria-hidden="true"></i>
+        <p>With fate predestined, purpose of life isn't anything more than knowing why we did what we were meant to do.</p>
+        <cite class="philosophy__cite">Anshul Joshi</cite>
+      </blockquote>
+    </section>
+
+    <!-- ===================== VIDEO ===================== -->
+    <section class="section section--alt" id="video" aria-labelledby="video-title">
+      <div class="container">
+        <div class="section__header reveal">
+          <h2 class="section__title" id="video-title">A Glimpse Into My Work</h2>
+          <p class="section__subtitle">// emergent behaviour, simple rules, playable systems</p>
+        </div>
+
+        <figure class="video__frame reveal">
+          <video class="video__player" controls preload="metadata" playsinline width="640" height="360">
+            <source src="assets/video/videoplayback.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+          </video>
+        </figure>
+        <p class="video__caption">Trailer: <cite>Black Mirror: Thronglets</cite> — Netflix Games. All rights belong to their respective owners.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer" id="contact">
+    <div class="footer__inner">
+      <div class="footer__about">
+        <p class="footer__brand">~/anshul</p>
+        <p class="footer__blurb">Building GenAI and conversational systems that hold up in production. Open to internships, research and interesting problems.</p>
+        <ul class="social-links" aria-label="Social profiles">
+          <li><a class="social-links__link" href="https://www.linkedin.com/in/anshul-joshi-24212618b/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a></li>
+          <li><a class="social-links__link" href="https://github.com/anshuljoshi07" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a></li>
+          <li><a class="social-links__link" href="https://x.com/Seeking_joshi" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a></li>
+          <li><a class="social-links__link" href="mailto:anshuljoshipratik@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope" aria-hidden="true"></i></a></li>
+        </ul>
+      </div>
+
+      <nav aria-label="Footer">
+        <h2 class="footer__heading">Navigate</h2>
+        <ul class="footer__links">
+          <li><a href="#home" data-scroll>home</a></li>
+          <li><a href="#experience" data-scroll>experience</a></li>
+          <li><a href="#projects" data-scroll>projects</a></li>
+          <li><a href="#achievements" data-scroll>achievements</a></li>
+          <li><a href="#video" data-scroll>video</a></li>
+        </ul>
+      </nav>
+
+      <div>
+        <h2 class="footer__heading">Contact</h2>
+        <ul class="footer__contact">
+          <li><i class="fa-solid fa-envelope" aria-hidden="true"></i><a href="mailto:anshuljoshipratik@gmail.com">anshuljoshipratik@gmail.com</a></li>
+          <li><i class="fa-solid fa-location-dot" aria-hidden="true"></i>Champaign, IL</li>
+          <li><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>University of Illinois Urbana-Champaign</li>
+        </ul>
+        <a class="footer__resume" href="assets/docs/anshul-joshi-resume.pdf" target="_blank" rel="noopener">
+          <i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i>Download Résumé
+        </a>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <p>&copy; <span id="year">2026</span> Anshul Joshi · Built with HTML5, SCSS &amp; vanilla JS</p>
+    </div>
+  </footer>
+
+  <!-- ===================== PROJECT MODALS ===================== -->
+  <div class="modal" id="modal-trading" role="dialog" aria-modal="true" aria-labelledby="modal-trading-title" hidden>
+    <div class="modal__backdrop" data-modal-close></div>
+    <div class="modal__dialog">
+      <button class="modal__close" type="button" data-modal-close aria-label="Close case study"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+      <p class="modal__eyebrow">case-study/01</p>
+      <h3 class="modal__title" id="modal-trading-title">Real-time LLM-News Trading Bot</h3>
+
+      <div class="modal__section">
+        <h4><i class="fa-solid fa-circle-exclamation" aria-hidden="true"></i>Problem</h4>
+        <p>Market-moving news arrives from many sources at once, much of it duplicated. Feeding all of it to an LLM is slow and expensive, and live exchange data isn't always available.</p>
+      </div>
+      <div class="modal__section">
+        <h4><i class="fa-solid fa-diagram-project" aria-hidden="true"></i>Approach</h4>
+        <ul>
+          <li>Event-driven, dual-pass agent ingesting 50+ NIFTY symbols and 4 news sources.</li>
+          <li>Hash-based dedup buffer drops repeated stories before they reach the model.</li>
+          <li>News-First LLM pipeline emits structured-JSON trade signals.</li>
+          <li>Real-time floating-P&amp;L audits on dual 15/30-minute cycles.</li>
+          <li>Falls back to sentiment-only reasoning when NSE data is restricted.</li>
+        </ul>
+      </div>
+      <div class="modal__section">
+        <h4><i class="fa-solid fa-layer-group" aria-hidden="true"></i>Tech stack</h4>
+        <div class="modal__tags"><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">SQLAlchemy</span><span class="tag">APScheduler</span><span class="tag">Gemini 2.5</span></div>
+      </div>
+      <div class="modal__section">
+        <h4><i class="fa-solid fa-bolt" aria-hidden="true"></i>Impact</h4>
+        <p><strong>−60% Gemini token usage</strong> from deduplication, with signals that keep flowing even when market data doesn't.</p>
+      </div>
+      <a class="modal__link" href="https://github.com/anshuljoshi07" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github" aria-hidden="true"></i>More on GitHub</a>
+    </div>
+  </div>
+
+  <div class="modal" id="modal-smirp" role="dialog" aria-modal="true" aria-labelledby="modal-smirp-title" hidden>
+    <div class="modal__backdrop" data-modal-close></div>
+    <div class="modal__dialog">
+      <button class="modal__close" type="button" data-modal-close aria-label="Close case study"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+      <p class="modal__eyebrow">case-study/02 · ICACITE, IEEE · Aug 2024</p>
+      <h3 class="modal__title" id="modal-smirp-title">SMIRP — Social Media Interactive Resource Planner for Students</h3>
+
+      <div class="modal__section">
+        <h4><i class="fa-solid fa-circle-exclamation" aria-hidden="true"></i>Problem</h4>
+        <p>Social media competes directly with study time, and students rarely have a way to see or plan how that time is spent.</p>
+      </div>
+      <div class="modal__section">
+        <h4><i class="fa-solid fa-diagram-project" aria-hidden="true"></i>Approach</h4>
+        <ul>
+          <li>Treat social-media time as a resource to be planned, not just restricted.</li>
+          <li>Bring usage, academic schedule and interaction patterns into one interactive planner.</li>
+          <li>Surface recommendations that fit focus blocks around coursework.</li>
+        </ul>
+      </div>
+      <div class="modal__section">
+        <h4><i class="fa-solid fa-layer-group" aria-hidden="true"></i>Focus areas</h4>
+        <div class="modal__tags"><span class="tag">Resource planning</span><span class="tag">Student productivity</span><span class="tag">Social media</span></div>
+      </div>
+      <div class="modal__section">
+        <h4><i class="fa-solid fa-bolt" aria-hidden="true"></i>Impact</h4>
+        <p>Peer-reviewed and published in the proceedings of IEEE ICACITE 2024.</p>
+      </div>
+      <a class="modal__link" href="https://doi.org/10.1109/ICACITE60783.2024.10616807" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>Read the paper (DOI)</a>
+    </div>
+  </div>
+
+  <div class="modal" id="modal-credit" role="dialog" aria-modal="true" aria-labelledby="modal-credit-title" hidden>
+    <div class="modal__backdrop" data-modal-close></div>
+    <div class="modal__dialog">
+      <button class="modal__close" type="button" data-modal-close aria-label="Close case study"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+      <p class="modal__eyebrow">case-study/03 · ViTECoN, IEEE · May 2023</p>
+      <h3 class="modal__title" id="modal-credit-title">Credit Scoring using Swarm Intelligence for Feature Selection and PSO-Trained ANN Classification</h3>
+
+      <div class="modal__section">
+        <h4><i class="fa-solid fa-circle-exclamation" aria-hidden="true"></i>Problem</h4>
+        <p>Credit datasets carry many noisy, correlated features, and gradient-trained networks can settle in poor local minima.</p>
+      </div>
+      <div class="modal__section">
+        <h4><i class="fa-solid fa-diagram-project" aria-hidden="true"></i>Approach</h4>
+        <ul>
+          <li>Swarm-intelligence search selects a compact, informative feature subset.</li>
+          <li>Particle Swarm Optimization trains the neural network's weights in place of backpropagation alone.</li>
+          <li>The resulting ANN classifies applicants by credit risk.</li>
+        </ul>
+      </div>
+      <div class="modal__section">
+        <h4><i class="fa-solid fa-layer-group" aria-hidden="true"></i>Tech stack</h4>
+        <div class="modal__tags"><span class="tag">Particle Swarm Optimization</span><span class="tag">Feature selection</span><span class="tag">Neural networks</span></div>
+      </div>
+      <div class="modal__section">
+        <h4><i class="fa-solid fa-bolt" aria-hidden="true"></i>Impact</h4>
+        <p>Peer-reviewed and published in the proceedings of IEEE ViTECoN 2023.</p>
+      </div>
+      <a class="modal__link" href="https://doi.org/10.1109/ViTECoN58111.2023.10157909" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>Read the paper (DOI)</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,154 @@
+// ==========================================================================
+// Experience timeline
+// ==========================================================================
+@use 'mixins' as *;
+
+$rail-x: 24px;
+$node-size: 18px;
+
+.timeline {
+  position: relative;
+  max-width: 900px;
+  margin-inline: auto;
+  padding-left: $rail-x * 2.5;
+
+  // Vertical rail
+  &::before {
+    content: '';
+    position: absolute;
+    top: 6px;
+    bottom: 6px;
+    left: $rail-x;
+    width: 2px;
+    background: linear-gradient(180deg, color('green'), color('green-deep'));
+    box-shadow: 0 0 10px alpha(color('green'), 0.4);
+  }
+
+  &__item {
+    position: relative;
+
+    & + & {
+      margin-top: space('xl');
+    }
+
+    // Node on the rail
+    &::before {
+      content: '';
+      position: absolute;
+      top: space('lg') + 0.35rem;
+      left: -($rail-x * 1.5) - ($node-size * 0.5) + 1px;
+      width: $node-size;
+      height: $node-size;
+      border-radius: 50%;
+      background: color('bg');
+      border: 3px solid color('green');
+      @include glow;
+    }
+
+    &--current::before {
+      background: color('green');
+      animation: pulse 2.4s infinite;
+    }
+  }
+
+  &__card {
+    @extend %card;
+    padding: space('lg') space('xl');
+  }
+
+  &__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: space('xxs') space('md');
+    margin-bottom: space('xxs');
+  }
+
+  &__role {
+    font-family: $font-mono;
+    font-size: 1.2rem;
+    color: color('green');
+  }
+
+  &__date {
+    font-family: $font-mono;
+    font-size: 0.85rem;
+    color: color('green-dim');
+    white-space: nowrap;
+    padding: 2px space('xs');
+    border: 1px solid color('border');
+    border-radius: 999px;
+  }
+
+  &__org {
+    color: color('text-muted');
+    font-size: 0.95rem;
+    margin-bottom: space('md');
+
+    i {
+      color: color('green-dim');
+      margin-right: space('xxs');
+    }
+  }
+
+  &__points {
+    display: grid;
+    gap: space('xs');
+
+    li {
+      position: relative;
+      padding-left: space('lg');
+      color: color('text');
+      font-size: 0.97rem;
+
+      &::before {
+        content: '\25B8'; // ▸
+        position: absolute;
+        left: 0;
+        color: color('green');
+      }
+    }
+
+    strong {
+      color: color('green');
+      font-weight: 600;
+    }
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: space('xs');
+    margin-top: space('md');
+  }
+
+  @include respond('tablet-portrait') {
+    padding-left: $rail-x * 1.5;
+
+    &::before {
+      left: $rail-x * 0.5;
+    }
+
+    &__item::before {
+      left: -($rail-x) - ($node-size * 0.5) + 1px;
+    }
+
+    &__card {
+      padding: space('lg');
+    }
+  }
+}
+
+// Small monospace pill used for tech tags (timeline + modals + carousel)
+.tag {
+  display: inline-block;
+  padding: 2px space('sm');
+  border-radius: 999px;
+  background: alpha(color('green'), 0.08);
+  border: 1px solid alpha(color('green'), 0.25);
+  color: color('green');
+  font-family: $font-mono;
+  font-size: 0.78rem;
+  white-space: nowrap;
+}

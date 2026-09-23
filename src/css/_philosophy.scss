@@ -1,0 +1,56 @@
+// ==========================================================================
+// Philosophy — fixed-position background image with a quote that stays
+// vertically + horizontally centered at any viewport size (flexbox)
+// ==========================================================================
+@use 'mixins' as *;
+
+.philosophy {
+  position: relative;
+  min-height: 70vh;
+  @include flex-center;
+  padding-block: space('4xl');
+  border-top: 1px solid color('border');
+  background-color: color('bg');
+  // Dark overlay: strongest behind the quote so the text stays readable
+  background-image:
+    radial-gradient(ellipse 60% 55% at center, alpha(color('bg'), 0.9) 0%, alpha(color('bg'), 0.72) 60%, alpha(color('bg'), 0.5) 100%),
+    linear-gradient(180deg, alpha(color('bg'), 0.8) 0%, transparent 25%, transparent 75%, alpha(color('bg'), 0.8) 100%),
+    url('../assets/img/bg-philosophy.jpg');
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+
+  &__quote {
+    @include container;
+    max-width: 920px;
+    text-align: center;
+
+    p {
+      font-family: $font-mono;
+      font-size: clamp(1.35rem, 1rem + 1.5vw, 2.3rem);
+      line-height: 1.5;
+      color: color('text');
+      text-shadow: 0 2px 12px color('bg'), 0 0 2px color('bg');
+    }
+  }
+
+  &__icon {
+    display: inline-block;
+    font-size: 2rem;
+    color: color('green');
+    margin-bottom: space('lg');
+    @include text-glow;
+  }
+
+  &__cite {
+    display: block;
+    margin-top: space('lg');
+    font-family: $font-mono;
+    font-style: normal;
+    color: color('green');
+
+    &::before {
+      content: '\2014\00a0';
+    }
+  }
+}

@@ -1,0 +1,49 @@
+// ==========================================================================
+// Embedded HTML5 video
+// ==========================================================================
+@use 'mixins' as *;
+
+.video {
+  &__frame {
+    position: relative;
+    max-width: 900px;
+    margin-inline: auto;
+    padding: space('xs');
+    border-radius: $radius-lg;
+    border: 1px solid color('green-dim');
+    background: color('surface');
+    @include glow(color('green'), 0.9);
+
+    // Terminal-style window bar
+    &::before {
+      content: '\25CF\00a0\25CF\00a0\25CF\00a0\00a0 ~/anshul/videoplayback.mp4';
+      display: block;
+      padding: space('xxs') space('sm') space('xs');
+      font-family: $font-mono;
+      font-size: 0.8rem;
+      color: color('green-dim');
+    }
+  }
+
+  &__player {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    border-radius: $radius;
+    background: color('bg');
+    object-fit: cover;
+  }
+
+  &__caption {
+    margin-top: space('md');
+    text-align: center;
+    font-family: $font-mono;
+    font-size: 0.85rem;
+    color: color('text-muted');
+
+    cite {
+      color: color('green');
+      font-style: normal;
+    }
+  }
+}

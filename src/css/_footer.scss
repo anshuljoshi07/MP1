@@ -1,0 +1,117 @@
+// ==========================================================================
+// Full-width footer
+// ==========================================================================
+@use 'mixins' as *;
+
+.footer {
+  width: 100%;
+  background: color('bg-alt');
+  border-top: 1px solid color('green-deep');
+  box-shadow: 0 -1px 0 alpha(color('green'), 0.15);
+
+  &__inner {
+    @include container;
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) minmax(0, 1.2fr);
+    gap: space('xxl');
+    padding-block: space('3xl') space('xxl');
+  }
+
+  &__brand {
+    font-family: $font-mono;
+    font-size: 1.5rem;
+    color: color('green');
+    margin-bottom: space('sm');
+    @include text-glow(color('green'), 0.5);
+  }
+
+  &__blurb {
+    color: color('text-muted');
+    font-size: 0.95rem;
+    max-width: 40ch;
+    margin-bottom: space('lg');
+  }
+
+  &__heading {
+    font-family: $font-mono;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: color('green');
+    margin-bottom: space('md');
+  }
+
+  &__links {
+    display: grid;
+    gap: space('xs');
+
+    a {
+      font-family: $font-mono;
+      font-size: 0.95rem;
+      color: color('text-muted');
+
+      &::before {
+        content: '$ ';
+        color: color('green-dim');
+      }
+
+      &:hover {
+        color: color('green');
+      }
+    }
+  }
+
+  &__contact {
+    display: grid;
+    gap: space('sm');
+    margin-bottom: space('lg');
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: space('sm');
+      color: color('text-muted');
+      font-size: 0.95rem;
+      overflow-wrap: anywhere;
+    }
+
+    i {
+      width: 1.2em;
+      color: color('green');
+      text-align: center;
+    }
+  }
+
+  &__resume {
+    @include button('ghost');
+  }
+
+  &__bottom {
+    border-top: 1px solid color('border');
+
+    p {
+      @include container;
+      padding-block: space('lg');
+      text-align: center;
+      font-family: $font-mono;
+      font-size: 0.85rem;
+      color: color('text-muted');
+    }
+  }
+
+  @include respond('tablet-landscape') {
+    &__inner {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    &__about {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @include respond('mobile') {
+    &__inner {
+      grid-template-columns: 1fr;
+    }
+  }
+}

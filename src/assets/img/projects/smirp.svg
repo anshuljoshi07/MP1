@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="SMIRP resource planner concept" font-family="Courier New, monospace">
+<defs><pattern id="g" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#00ff41" stroke-opacity=".07"/></pattern><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#00ff41"/></marker><filter id="f" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><rect width="800" height="500" fill="#010a04"/><rect width="800" height="500" fill="url(#g)"/>
+<text x="40" y="52" fill="#00ff41" font-size="20" font-weight="bold">$ smirp --plan student.week</text>
+<g filter="url(#f)"><circle cx="400" cy="270" r="78" fill="#06140a" stroke="#00ff41" stroke-width="2.5"/></g>
+<text x="400" y="266" fill="#00ff41" font-size="26" text-anchor="middle" font-weight="bold">SMIRP</text>
+<text x="400" y="290" fill="#86b894" font-size="12" text-anchor="middle">resource planner</text>
+<g stroke="#00ff41" stroke-width="2" stroke-dasharray="6 5"><path d="M330 235L190 150"/><path d="M470 235L610 150"/><path d="M330 305L190 390"/><path d="M470 305L610 390"/><path d="M400 192V120"/></g>
+<g fill="#06140a" stroke="#00ff41" stroke-width="2">
+<rect x="90" y="115" width="200" height="64" rx="8"/><rect x="510" y="115" width="200" height="64" rx="8"/>
+<rect x="90" y="360" width="200" height="64" rx="8"/><rect x="510" y="360" width="200" height="64" rx="8"/>
+<rect x="320" y="72" width="160" height="50" rx="8"/>
+</g>
+<g fill="#d6ffe0" font-size="15" text-anchor="middle">
+<text x="190" y="143">social feeds</text><text x="190" y="163" fill="#86b894" font-size="12">interaction signals</text>
+<text x="610" y="143">schedule</text><text x="610" y="163" fill="#86b894" font-size="12">classes / deadlines</text>
+<text x="190" y="388">screen time</text><text x="190" y="408" fill="#86b894" font-size="12">usage analytics</text>
+<text x="610" y="388">recommendations</text><text x="610" y="408" fill="#86b894" font-size="12">focus blocks</text>
+<text x="400" y="102">student</text>
+</g>
+<text x="760" y="475" fill="#008f11" font-size="13" text-anchor="end">ICACITE · IEEE · 2024</text>
+</svg>

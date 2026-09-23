@@ -1,0 +1,16 @@
+// ==========================================================================
+// Anshul Joshi — portfolio stylesheet entrypoint
+// Compile: npm run build:css  →  css/style.css
+// ==========================================================================
+@use 'base';
+@use 'animations';
+@use 'navbar';
+@use 'hero';
+@use 'experience';
+@use 'carousel';
+@use 'achievements';
+@use 'philosophy';
+@use 'video';
+@use 'modal';
+@use 'footer';
+@use 'responsive';

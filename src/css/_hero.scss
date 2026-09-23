@@ -1,0 +1,271 @@
+// ==========================================================================
+// Hero header (#home) with digital-rain canvas backdrop
+// ==========================================================================
+@use 'mixins' as *;
+
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: calc(100vh - #{$nav-height});
+  min-height: calc(100svh - #{$nav-height});
+  @include flex-center;
+  padding-block: space('3xl');
+  overflow: hidden;
+  isolation: isolate;
+
+  &__rain {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    opacity: 0.35;
+  }
+
+  // Vignette so text stays readable above the rain
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+      radial-gradient(ellipse at 30% 50%, alpha(color('bg'), 0.55), alpha(color('bg'), 0.92) 70%),
+      linear-gradient(180deg, transparent 70%, color('bg'));
+  }
+
+  &__inner {
+    @include container;
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+    align-items: center;
+    gap: space('3xl');
+  }
+
+  &__content {
+    animation: fadeInUp 0.9s $ease-out both;
+  }
+
+  &__prompt {
+    font-family: $font-mono;
+    font-size: 0.95rem;
+    color: color('green-dim');
+    margin-bottom: space('sm');
+  }
+
+  &__name {
+    font-family: $font-mono;
+    font-size: clamp(2.6rem, 1.6rem + 3.4vw, 4.6rem);
+    line-height: 1.05;
+    color: color('green');
+    margin-bottom: space('md');
+    animation: flicker 6s infinite;
+    @include text-glow(color('green'), 1.2);
+  }
+
+  &__tagline {
+    font-family: $font-mono;
+    font-size: clamp(0.95rem, 0.8rem + 0.45vw, 1.2rem);
+    color: color('text');
+    margin-bottom: space('lg');
+
+    &::after {
+      content: '_';
+      margin-left: 2px;
+      color: color('green');
+      animation: blink 1s steps(1) infinite;
+    }
+  }
+
+  &__lede {
+    max-width: 58ch;
+    color: color('text-muted');
+    font-size: 1.05rem;
+    margin-bottom: space('xl');
+
+    strong {
+      color: color('text');
+      font-weight: 600;
+    }
+  }
+
+  &__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: space('xs') space('lg');
+    margin-bottom: space('xl');
+    font-family: $font-mono;
+    font-size: 0.9rem;
+    color: color('text-muted');
+
+    i {
+      color: color('green');
+      margin-right: space('xxs');
+    }
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: space('md');
+    margin-bottom: space('xl');
+  }
+
+  &__cta {
+    @include button('solid');
+
+    &--pulse {
+      animation: pulse 2.4s infinite;
+    }
+
+    &--ghost {
+      @include button('ghost');
+    }
+  }
+
+  &__media {
+    @include flex-center;
+    animation: fadeInUp 0.9s 0.2s $ease-out both;
+  }
+
+  &__photo-frame {
+    position: relative;
+    width: min(100%, 380px);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    padding: 10px;
+
+    // Rotating dashed "scanner" ring
+    &::before {
+      content: '';
+      position: absolute;
+      inset: -14px;
+      border-radius: 50%;
+      border: 2px dashed alpha(color('green'), 0.55);
+      animation: spin 24s linear infinite;
+    }
+
+    // Solid glowing ring
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 3px solid color('green');
+      @include glow(color('green'), 1.6);
+      pointer-events: none;
+    }
+  }
+
+  &__photo {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center 28%; // portrait photo: keep the face in the circle
+    background: color('surface');
+  }
+
+  &__scroll {
+    position: absolute;
+    bottom: space('lg');
+    left: 50%;
+    transform: translateX(-50%);
+    @include flex-center(column);
+    gap: space('xxs');
+    font-family: $font-mono;
+    font-size: 0.75rem;
+    color: color('text-muted');
+
+    i {
+      color: color('green');
+      animation: scrollCue 1.8s ease-in-out infinite;
+    }
+  }
+
+  // ---- Short laptop screens (1366×768, 1280×720) ---------------------------
+  @media (max-height: 800px) and (min-width: 769px) {
+    padding-block: space('xxl') space('3xl');
+
+    &__photo-frame {
+      width: min(100%, 320px);
+    }
+
+    &__lede,
+    &__meta,
+    &__actions {
+      margin-bottom: space('lg');
+    }
+  }
+
+  @include respond('tablet-landscape') {
+    &__inner {
+      gap: space('xxl');
+    }
+
+    &__photo-frame {
+      width: min(100%, 300px);
+    }
+  }
+
+  // ---- Tablet portrait: photo above text ------------------------------------
+  @include respond('tablet-portrait') {
+    min-height: auto;
+    padding-block: space('3xl') space('4xl');
+    text-align: center;
+
+    &__inner {
+      grid-template-columns: 1fr;
+      gap: space('xl');
+    }
+
+    &__media {
+      order: -1;
+    }
+
+    &__photo-frame {
+      width: min(70vw, 260px);
+    }
+
+    &__lede {
+      margin-inline: auto;
+    }
+
+    &__meta,
+    &__actions {
+      justify-content: center;
+    }
+
+    .social-links {
+      justify-content: center;
+    }
+  }
+}
+
+// ---- Social icon row (used in hero + footer) --------------------------------
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: space('sm');
+
+  &__link {
+    @include flex-center;
+    width: 46px;
+    height: 46px;
+    border: 1px solid color('border');
+    border-radius: 50%;
+    color: color('green');
+    font-size: 1.15rem;
+    background: alpha(color('surface'), 0.8);
+    transition: transform $transition-fast, border-color $transition-fast,
+      box-shadow $transition-fast, background-color $transition-fast;
+
+    &:hover,
+    &:focus-visible {
+      color: color('bg');
+      background: color('green');
+      border-color: color('green');
+      transform: translateY(-3px);
+      @include glow(color('green'), 1.2);
+    }
+  }
+}

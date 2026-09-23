@@ -1,0 +1,144 @@
+// ==========================================================================
+// Mixins, functions & placeholders. Forwards the variables so partials only
+// need `@use 'mixins' as *;`
+// ==========================================================================
+@forward 'variables';
+@use 'variables' as *;
+@use 'sass:map';
+@use 'sass:color';
+
+// Translucent version of any palette color
+@function alpha($c, $a) {
+  @return color.change($c, $alpha: $a);
+}
+
+// ---- Layout helpers ---------------------------------------------------------
+@mixin flex-center($direction: row) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin container {
+  width: 100%;
+  max-width: $container-max;
+  margin-inline: auto;
+  padding-inline: $container-pad;
+}
+
+// Max-width media query keyed by the $breakpoints map
+@mixin respond($bp) {
+  @if not map.has-key($breakpoints, $bp) {
+    @error "Unknown breakpoint `#{$bp}`.";
+  }
+  @media (max-width: map.get($breakpoints, $bp)) {
+    @content;
+  }
+}
+
+@mixin respond-min($bp) {
+  @media (min-width: map.get($breakpoints, $bp) + 1px) {
+    @content;
+  }
+}
+
+@mixin reduced-motion {
+  @media (prefers-reduced-motion: reduce) {
+    @content;
+  }
+}
+
+// ---- Matrix glow ------------------------------------------------------------
+@mixin glow($c: color('green'), $strength: 1) {
+  box-shadow:
+    0 0 (6px * $strength) alpha($c, 0.55),
+    0 0 (18px * $strength) alpha($c, 0.25);
+}
+
+@mixin text-glow($c: color('green'), $strength: 1) {
+  text-shadow:
+    0 0 (4px * $strength) alpha($c, 0.7),
+    0 0 (14px * $strength) alpha($c, 0.35);
+}
+
+// ---- Buttons ----------------------------------------------------------------
+@mixin button($variant: 'solid') {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: space('xs');
+  padding: space('sm') space('lg');
+  border: 1px solid color('green');
+  border-radius: $radius;
+  font-family: $font-mono;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color $transition-fast, color $transition-fast,
+    box-shadow $transition-fast, transform $transition-fast;
+
+  @if $variant == 'solid' {
+    background: color('green');
+    color: color('bg');
+
+    &:hover,
+    &:focus-visible {
+      background: color('text');
+      @include glow(color('green'), 1.4);
+      transform: translateY(-2px);
+    }
+  } @else {
+    background: transparent;
+    color: color('green');
+
+    &:hover,
+    &:focus-visible {
+      background: alpha(color('green'), 0.1);
+      @include glow;
+      transform: translateY(-2px);
+    }
+  }
+}
+
+// ---- Shared placeholders (used with @extend) --------------------------------
+%card {
+  background: linear-gradient(160deg, color('surface-2'), color('surface'));
+  border: 1px solid color('border');
+  border-radius: $radius-lg;
+  transition: border-color $transition-base, box-shadow $transition-base,
+    transform $transition-base;
+
+  &:hover {
+    border-color: color('green-dim');
+    @include glow(color('green'), 0.8);
+  }
+}
+
+%section-heading {
+  font-family: $font-mono;
+  font-size: clamp(1.8rem, 1.2rem + 1.6vw, 2.6rem);
+  color: color('green');
+  text-align: center;
+  margin-bottom: space('xs');
+  @include text-glow(color('green'), 0.6);
+
+  &::before {
+    content: '> ';
+    color: color('green-dim');
+  }
+}
+
+%visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}

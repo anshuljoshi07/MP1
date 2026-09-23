@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="PSO-trained neural network for credit scoring" font-family="Courier New, monospace">
+<defs><pattern id="g" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#00ff41" stroke-opacity=".07"/></pattern><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#00ff41"/></marker><filter id="f" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><rect width="800" height="500" fill="#010a04"/><rect width="800" height="500" fill="url(#g)"/>
+<text x="40" y="52" fill="#00ff41" font-size="20" font-weight="bold">$ pso --swarm=40 --train ann</text>
+<text x="60" y="95" fill="#86b894" font-size="13">particle swarm → feature selection</text>
+<g fill="#00ff41" fill-opacity=".75"><circle cx="60" cy="120" r="4"/><circle cx="157" cy="181" r="4"/><circle cx="254" cy="242" r="4"/><circle cx="351" cy="303" r="4"/><circle cx="118" cy="364" r="4"/><circle cx="215" cy="145" r="4"/><circle cx="312" cy="206" r="4"/><circle cx="79" cy="267" r="4"/><circle cx="176" cy="328" r="4"/><circle cx="273" cy="389" r="4"/><circle cx="370" cy="170" r="4"/><circle cx="137" cy="231" r="4"/><circle cx="234" cy="292" r="4"/><circle cx="331" cy="353" r="4"/><circle cx="98" cy="134" r="4"/><circle cx="195" cy="195" r="4"/><circle cx="292" cy="256" r="4"/><circle cx="389" cy="317" r="4"/><circle cx="156" cy="378" r="4"/><circle cx="253" cy="159" r="4"/><circle cx="350" cy="220" r="4"/><circle cx="117" cy="281" r="4"/><circle cx="214" cy="342" r="4"/><circle cx="311" cy="123" r="4"/><circle cx="78" cy="184" r="4"/><circle cx="175" cy="245" r="4"/><circle cx="272" cy="306" r="4"/><circle cx="369" cy="367" r="4"/><circle cx="136" cy="148" r="4"/><circle cx="233" cy="209" r="4"/><circle cx="330" cy="270" r="4"/><circle cx="97" cy="331" r="4"/><circle cx="194" cy="392" r="4"/><circle cx="291" cy="173" r="4"/><circle cx="388" cy="234" r="4"/></g>
+<g stroke="#00ff41" stroke-opacity=".35" fill="none"><path d="M100 400C160 300 220 260 300 250"/><path d="M380 150C340 200 320 230 300 250"/><path d="M90 150C180 190 240 230 300 250"/></g>
+<g filter="url(#f)"><circle cx="300" cy="250" r="9" fill="#00ff41"/></g>
+<text x="316" y="244" fill="#00ff41" font-size="12">gbest</text>
+<g stroke="#00ff41" stroke-opacity=".3" stroke-width="1.2">
+<path d="M480 140 200 260 320 380 L600 170 230 290 350"/>
+<path d="M600 170 230 290 350 L720 260"/>
+</g><g fill="#06140a" stroke="#00ff41" stroke-width="2">
+<circle cx="480" cy="140 200 260 320 380" r="12"/>
+<circle cx="600" cy="170 230 290 350" r="12"/>
+<circle cx="720" cy="260" r="16" fill="#00ff41"/></g>
+<text x="600" y="430" fill="#86b894" font-size="13" text-anchor="middle">ANN classifier</text><text x="720" y="300" fill="#00ff41" font-size="13" text-anchor="middle">score</text><text x="760" y="475" fill="#008f11" font-size="13" text-anchor="end">ViTECoN · IEEE · 2023</text></svg>

@@ -1,0 +1,150 @@
+// ==========================================================================
+// Reset, typography, shared section scaffolding
+// ==========================================================================
+@use 'mixins' as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+// Expose layout tokens to JS (smooth-scroll offset)
+:root {
+  --nav-h-compact: #{$nav-height-compact};
+}
+
+html {
+  // Anchor fallback when JS is off: keeps headings clear of the compact navbar
+  scroll-padding-top: $nav-height-compact;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: color('bg');
+  color: color('text');
+  font-family: $font-sans;
+  font-size: 1rem;
+  line-height: 1.65;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+
+  &.is-locked {
+    overflow: hidden;
+  }
+}
+
+img,
+video,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: color('green');
+  text-decoration: none;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: color('text');
+  }
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
+}
+
+:focus-visible {
+  outline: 2px solid color('green');
+  outline-offset: 3px;
+}
+
+::selection {
+  background: color('green');
+  color: color('bg');
+}
+
+.container {
+  @include container;
+}
+
+.visually-hidden {
+  @extend %visually-hidden;
+}
+
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: space('md');
+  z-index: z('modal') + 1;
+  @include button;
+
+  &:focus {
+    top: space('md');
+  }
+}
+
+// ---- Full-bleed section stripes --------------------------------------------
+.section {
+  position: relative;
+  width: 100%;
+  padding-block: space('4xl');
+  border-top: 1px solid color('border');
+
+  &--alt {
+    background: color('bg-alt');
+  }
+
+  &__header {
+    max-width: 720px;
+    margin: 0 auto space('xxl');
+    text-align: center;
+  }
+
+  &__title {
+    @extend %section-heading;
+  }
+
+  &__subtitle {
+    color: color('text-muted');
+    font-family: $font-mono;
+    font-size: 0.95rem;
+  }
+
+  @include respond('tablet-landscape') {
+    padding-block: space('3xl');
+  }
+}
+
+// Scroll-reveal starting state (JS adds .is-visible). Only hides content
+// when JS is running, so no-JS visitors still see everything.
+.js .reveal {
+  opacity: 0;
+  transform: translateY(32px);
+
+  &.is-visible {
+    animation: fadeInUp 0.8s $ease-out forwards;
+  }
+}
+
+@include reduced-motion {
+  .js .reveal {
+    opacity: 1;
+    transform: none;
+
+    &.is-visible {
+      animation: none;
+    }
+  }
+}

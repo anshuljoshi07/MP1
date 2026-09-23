@@ -1,0 +1,89 @@
+// ==========================================================================
+// Design tokens — Matrix palette, spacing, type, breakpoints
+// ==========================================================================
+@use 'sass:map';
+
+// ---- Colors ----------------------------------------------------------------
+$colors: (
+  'bg':          #000000,
+  'bg-alt':      #030d06,
+  'surface':     #06140a,
+  'surface-2':   #0a1f10,
+  'border':      #0f3d1d,
+  'green':       #00ff41,
+  'green-mid':   #00c832,
+  'green-dim':   #008f11,
+  'green-deep':  #003b00,
+  'text':        #d6ffe0,
+  'text-muted':  #86b894,
+  'white':       #ffffff
+);
+
+@function color($key) {
+  @if not map.has-key($colors, $key) {
+    @error "Unknown color `#{$key}`.";
+  }
+  @return map.get($colors, $key);
+}
+
+// ---- Spacing scale -----------------------------------------------------------
+$spacing: (
+  'xxs': 0.25rem,
+  'xs':  0.5rem,
+  'sm':  0.75rem,
+  'md':  1rem,
+  'lg':  1.5rem,
+  'xl':  2rem,
+  'xxl': 3rem,
+  '3xl': 4.5rem,
+  '4xl': 6rem
+);
+
+@function space($key) {
+  @return map.get($spacing, $key);
+}
+
+// ---- Typography -------------------------------------------------------------
+$font-mono: 'JetBrains Mono', 'Fira Code', 'Courier New', Courier, monospace;
+$font-sans: 'Inter', 'Segoe UI', system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif;
+
+// ---- Layout -----------------------------------------------------------------
+$container-max: 1180px;
+$container-pad: space('xl');
+$radius: 10px;
+$radius-lg: 16px;
+
+// Navbar: large at the top, compact once scrolled
+$nav-height: 88px;
+$nav-height-compact: 58px;
+$nav-font: 1.05rem;
+$nav-font-compact: 0.85rem;
+$nav-brand-font: 1.6rem;
+$nav-brand-font-compact: 1.15rem;
+
+// ---- Motion -----------------------------------------------------------------
+$ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+$transition-fast: 0.2s ease;
+$transition-base: 0.35s $ease-out;
+
+// ---- Breakpoints (required test resolutions) --------------------------------
+$breakpoints: (
+  'desktop-lg':       1920px,
+  'desktop':          1366px,
+  'laptop':           1280px,
+  'tablet-landscape': 1024px,
+  'tablet-portrait':  768px,
+  'mobile':           560px
+);
+
+// ---- Layering ---------------------------------------------------------------
+$z: (
+  'rain':   0,
+  'base':   1,
+  'nav':    100,
+  'modal':  1000
+);
+
+@function z($key) {
+  @return map.get($z, $key);
+}

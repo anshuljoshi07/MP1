@@ -1,0 +1,91 @@
+// ==========================================================================
+// Achievements — multi-column stat grid (4 → 2 → 1)
+// ==========================================================================
+@use 'mixins' as *;
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: space('lg');
+
+  &__card {
+    @extend %card;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: space('sm');
+    padding: space('xl') space('lg');
+    overflow: hidden;
+
+    // Scan-line sweep on hover
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 0%, alpha(color('green'), 0.12) 50%, transparent 100%);
+      transform: translateY(-100%);
+      transition: transform 0.7s $ease-out;
+      pointer-events: none;
+    }
+
+    &:hover {
+      transform: translateY(-6px);
+
+      &::after {
+        transform: translateY(100%);
+      }
+
+      .stats__icon {
+        background: color('green');
+        color: color('bg');
+      }
+    }
+  }
+
+  &__icon {
+    @include flex-center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 1px solid color('green');
+    color: color('green');
+    font-size: 1.4rem;
+    transition: background-color $transition-base, color $transition-base;
+  }
+
+  &__value {
+    font-family: $font-mono;
+    font-size: clamp(1.7rem, 1.3rem + 1vw, 2.3rem);
+    font-weight: 700;
+    line-height: 1.1;
+    color: color('green');
+    @include text-glow(color('green'), 0.7);
+
+    small {
+      font-size: 0.5em;
+      color: color('green-mid');
+      text-shadow: none;
+    }
+  }
+
+  &__label {
+    font-family: $font-mono;
+    font-size: 0.95rem;
+    color: color('text');
+  }
+
+  &__detail {
+    font-size: 0.88rem;
+    color: color('text-muted');
+  }
+
+  @include respond('tablet-landscape') {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @include respond('mobile') {
+    grid-template-columns: 1fr;
+  }
+}

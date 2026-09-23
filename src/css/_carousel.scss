@@ -1,0 +1,183 @@
+// ==========================================================================
+// Projects carousel — vanilla JS drives translateX on the track
+// ==========================================================================
+@use 'mixins' as *;
+
+$arrow-size: 52px;
+
+.carousel {
+  position: relative;
+  max-width: 1040px;
+  margin-inline: auto;
+  padding-inline: $arrow-size + 20px;
+
+  &__viewport {
+    overflow: hidden;
+    border-radius: $radius-lg;
+    border: 1px solid color('border');
+    @include glow(color('green'), 0.5);
+  }
+
+  &__track {
+    display: flex;
+    transition: transform 0.6s $ease-out;
+    will-change: transform;
+  }
+
+  &__slide {
+    flex: 0 0 100%;
+    min-width: 0;
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    background: linear-gradient(160deg, color('surface-2'), color('surface'));
+  }
+
+  &__figure {
+    position: relative;
+    @include flex-center;
+    background: #010a04; // matches the diagram canvas so letterboxing is invisible
+    border-right: 1px solid color('border');
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transition: transform 0.8s $ease-out;
+    }
+  }
+
+  &__slide:hover &__figure img {
+    transform: scale(1.04);
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: space('md');
+    padding: space('xxl') space('xl');
+  }
+
+  &__index {
+    font-family: $font-mono;
+    font-size: 0.85rem;
+    color: color('green-dim');
+  }
+
+  &__title {
+    font-family: $font-mono;
+    font-size: clamp(1.25rem, 1rem + 0.7vw, 1.6rem);
+    line-height: 1.25;
+    color: color('green');
+  }
+
+  &__summary {
+    color: color('text-muted');
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: space('xs');
+  }
+
+  &__cta {
+    @include button('ghost');
+    align-self: flex-start;
+    margin-top: space('xs');
+  }
+
+  // ---- Side arrows ----------------------------------------------------------
+  &__arrow {
+    position: absolute;
+    top: 50%;
+    z-index: 2; // the transformed track would otherwise paint over the prev arrow
+    transform: translateY(-50%);
+    @include flex-center;
+    width: $arrow-size;
+    height: $arrow-size;
+    border-radius: 50%;
+    border: 1px solid color('green');
+    background: color('bg');
+    color: color('green');
+    font-size: 1.1rem;
+    transition: background-color $transition-fast, color $transition-fast,
+      box-shadow $transition-fast, transform $transition-fast;
+
+    &:hover,
+    &:focus-visible {
+      background: color('green');
+      color: color('bg');
+      @include glow(color('green'), 1.3);
+      transform: translateY(-50%) scale(1.08);
+    }
+
+    &--prev {
+      left: 0;
+    }
+
+    &--next {
+      right: 0;
+    }
+  }
+
+  // ---- Dot indicators -------------------------------------------------------
+  &__dots {
+    @include flex-center;
+    gap: space('sm');
+    margin-top: space('lg');
+  }
+
+  &__dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 999px;
+    border: 1px solid color('green');
+    background: transparent;
+    transition: width $transition-base, background-color $transition-base;
+
+    &.is-active {
+      width: 32px;
+      background: color('green');
+      @include glow;
+    }
+  }
+
+  @include respond('tablet-landscape') {
+    &__body {
+      padding: space('xl') space('lg');
+    }
+  }
+
+  // ---- Tablet portrait: stack image above text, smaller arrows -------------
+  @include respond('tablet-portrait') {
+    padding-inline: 0;
+
+    &__slide {
+      grid-template-columns: 1fr;
+    }
+
+    &__figure {
+      border-right: 0;
+      border-bottom: 1px solid color('border');
+      aspect-ratio: 16 / 9;
+    }
+
+    &__arrow {
+      width: 42px;
+      height: 42px;
+      font-size: 0.95rem;
+      top: calc((100% - 44px) * 0.28);
+      background: alpha(color('bg'), 0.85);
+
+      &--prev {
+        left: space('sm');
+      }
+
+      &--next {
+        right: space('sm');
+      }
+    }
+  }
+}
